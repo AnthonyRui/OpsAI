@@ -1,15 +1,17 @@
-# Architecture
+# OpsAI architecture
 
-Current implemented path:
-
-```text
-Python caller or existing CLI
-  -> agent validated tools
-  -> src deterministic capacity calculations
-  -> results with units, sources and scope
+```mermaid
+flowchart LR
+  CSV[CPU interval CSV] --> V[Validate records]
+  V --> R[Group by server and detect sustained load]
+  R --> E[Event evidence and trend plot]
+  E -. planned .-> UI[Operations dashboard]
+  E -. planned .-> AI[Evidence-based AI explanation]
+  AI -. planned .-> UI
+  P[Facility and equipment parameters] --> T[Existing capacity tools]
+  T --> M[Deterministic power model]
+  M --> C[Capacity results with units and sources]
+  C -. planned .-> UI
 ```
 
-Optional LLM orchestration and local knowledge retrieval reuse the existing agent/ code.
-The new app/ directories are placeholders only. No web API or Dashboard is deployed.
-Future telemetry analysis must be explicitly scoped and evaluated separately from capacity calculations.
-Existing entry points and resource paths are preserved to avoid breaking tests and notebooks.
+实线为可本地运行的流程；虚线为计划功能。CPU 读数与设施功率参数来源不同，两条路径独立。运营页面尚未部署。现有容量 CLI 可选用 LLM，本地 CPU 示例无需密钥。

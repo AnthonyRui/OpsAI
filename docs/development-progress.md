@@ -1,5 +1,15 @@
 # Development record / 开发记录
 
+## 2026-11-09 — November 2–8 foundation catch-up
+
+Completed the Project 1 proposal, architecture diagram, synthetic CPU interval
+data contract, baseline acceptance cases and repository task list. The offline
+example produced exactly one 15-minute event for demo-a (peak 92%) and generated
+the README plot. All 100 local tests passed, including 3 new operational tests.
+This validates a demonstration rule only; real-world accuracy, AI investigation
+and public deployment are not claimed. The GitHub Projects board itself was not
+created; the credential did not advertise the project scope.
+
 ## 2026-11-02 — Capacity-module integration preparation
 
 Implemented local application example `examples/opsai_capacity.py` using the

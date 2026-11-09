@@ -6,10 +6,20 @@ Data-center operations project foundation, initialized from an existing capacity
 
 The reusable capacity module is implemented: deterministic power calculations, scenario comparison,
 PUE sensitivity, validated plots, a conversational CLI and sourced local knowledge retrieval.
-Operational telemetry ingestion, high-load detection, an operations Dashboard and incident investigation
-are **not implemented**. Development is awaiting the owner's next scope decision.
+A local CPU baseline now reads five-minute interval data and flags sustained high load.
+The bundled example is synthetic; there is no live telemetry, deployed dashboard or incident diagnosis.
 
-本仓库先保留已验证的容量规划能力，准备后续运营分析扩展。当前没有上线网页、运营异常检测或事件调查系统。
+项目第一阶段：[一页提案](project-1/proposal.md) · [架构图](docs/architecture.md) ·
+[数据说明](docs/operational-data.md) · [验收与任务清单](eval/README.md)。
+安装依赖后运行：
+
+```sh
+python examples/cpu_baseline.py --plot generated/cpu_baseline.png
+```
+
+示例应仅标记 demo-a 在 12:05–12:20 UTC 的持续高负载；图中空白表示缺少读数。
+
+![Synthetic CPU interval averages and the sustained-load event](docs/assets/cpu-baseline-demo.png)
 
 ## Quick start
 
@@ -42,8 +52,8 @@ Credentials belong in your local `.env`, never in Git. See [CLI setup](docs/agen
 | `examples/`, `tests/` | Runnable examples and existing automated tests |
 | `figures/`, `results/`, `notebooks/` | Reference capacity analysis artifacts |
 | `app/` | Documentation placeholders for future application components |
-| `eval/` | Planned operational evaluation; no fabricated evaluation scores |
-| `project-1/`, `project-2/` | Proposal and release-note placeholders awaiting scope definition |
+| `eval/` | Baseline acceptance cases and future evaluation criteria |
+| `project-1/`, `project-2/` | First project proposal and future second-project placeholder |
 | `docs/` | Existing module guides plus architecture and source provenance |
 | `.github/workflows/` | Automated capacity checks inherited from the source |
 
